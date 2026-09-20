@@ -4,7 +4,7 @@ import { Camera, Image as ImageIcon, X, Upload } from 'lucide-react';
 
 export default function PhotoWallSection({ data }) {
   const pw = data.photoWall;
-  const targetDate = new Date(data.date.targetDate || '2026-08-08T19:00:00').getTime();
+  const targetDate = new Date(data.date.targetDate || '2027-08-08T19:00:00').getTime();
   const [showModal, setShowModal] = useState(false);
   const [testPhotos, setTestPhotos] = useState([
     '/assets/lacy_intro-poster.jpg',

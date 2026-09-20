@@ -34,10 +34,10 @@ export const invitationData = {
       badge: 'TARİH',
       day: '08',
       month: 'AĞUSTOS',
-      year: '2026',
-      weekday: 'CUMARTESİ',
+      year: '2027',
+      weekday: 'PAZAR',
       time: '19.00',
-      targetDate: '2026-08-08T19:00:00'
+      targetDate: '2027-08-08T19:00:00'
     },
     location: {
       badge: 'Konum',
@@ -170,10 +170,10 @@ export const invitationData = {
       badge: 'التاريخ',
       day: '08',
       month: 'أغسطس',
-      year: '2026',
-      weekday: 'السبت',
+      year: '2027',
+      weekday: 'الأحد',
       time: '19:00',
-      targetDate: '2026-08-08T19:00:00'
+      targetDate: '2027-08-08T19:00:00'
     },
     location: {
       badge: 'الموقع',
