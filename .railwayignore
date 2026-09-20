@@ -6,13 +6,5 @@ scratch*
 fs_out.txt
 theme_list.txt
 video_2026-09-19_14-23-52.mp4
-serene_*
-lacy-deluxe_*
 *.log
-bg_music.mp3
-frame_map.png
-lacy_bg.webp
-lacy_intro-poster.jpg
-lacy_intro.mp4
-map_card.png
-map_window.png
+public/assets/lacy_intro.mp4
