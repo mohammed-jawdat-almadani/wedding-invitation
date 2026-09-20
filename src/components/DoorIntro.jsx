@@ -43,14 +43,22 @@ export default function DoorIntro({ data, onOpen, isOpened }) {
         >
           {/* Background Poster & Video Layer */}
           <div className="absolute inset-0 w-full h-full">
-            {/* Poster image */}
-            <img
-              src="/assets/lacy_intro-poster.jpg"
-              alt="Doors"
-              className={`w-full h-full object-cover object-center transition-opacity duration-300 ${
-                isOpening ? 'opacity-0' : 'opacity-100'
-              }`}
-            />
+            {/* Poster image with seamless background fallback */}
+            <div
+              className="absolute inset-0 w-full h-full bg-no-repeat bg-cover bg-center"
+              style={{ backgroundImage: `url('/assets/lacy_intro-poster.jpg')` }}
+            >
+              <img
+                src="/assets/lacy_intro-poster.jpg"
+                alt=""
+                aria-hidden="true"
+                loading="eager"
+                onError={(e) => { e.currentTarget.style.display = 'none'; }}
+                className={`w-full h-full object-cover object-center transition-opacity duration-300 ${
+                  isOpening ? 'opacity-0' : 'opacity-100'
+                }`}
+              />
+            </div>
 
             {/* Video of doors swinging open */}
             <video

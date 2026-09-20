@@ -6,10 +6,16 @@ export default function CardFrame({ children, onNext, isLast, data }) {
   return (
     <div className="relative w-full h-full min-h-[100dvh] flex flex-col items-center justify-between overflow-hidden">
       {/* Background Lace & Arch Wallpaper */}
-      <div className="absolute inset-0 pointer-events-none z-0">
+      <div
+        className="absolute inset-0 pointer-events-none z-0 bg-no-repeat bg-cover bg-center"
+        style={{ backgroundImage: `url('/assets/lacy_bg.webp')` }}
+      >
         <img
           src="/assets/lacy_bg.webp"
-          alt="Lace arch background"
+          alt=""
+          aria-hidden="true"
+          loading="eager"
+          onError={(e) => { e.currentTarget.style.display = 'none'; }}
           className="w-full h-full object-fill object-center"
         />
       </div>

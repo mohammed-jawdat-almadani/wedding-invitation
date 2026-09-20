@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Smartphone, Maximize2, Minimize2, Globe, Users } from 'lucide-react';
 
-export default function DeviceWrapper({ children, lang, onToggleLang, onOpenAdmin, data }) {
+export default function DeviceWrapper({ children, lang, onToggleLang, onOpenAdmin, data, isOpened }) {
   const [isFullWidth, setIsFullWidth] = useState(false);
+  const isRtl = data.dir === 'rtl';
 
   return (
     <div className="relative min-h-[100dvh] w-full bg-[#1C1715] flex flex-col items-center justify-center overflow-x-hidden selection:bg-gold-400 selection:text-white">
@@ -69,17 +70,23 @@ export default function DeviceWrapper({ children, lang, onToggleLang, onOpenAdmi
           </div>
         )}
 
-        {/* Mobile Viewport Header Utility (Mobile only) */}
-        <div className="md:hidden fixed top-3 left-3 z-40 flex items-center gap-2">
-          <button
-            onClick={onToggleLang}
-            type="button"
-            className="px-3 py-1 rounded-full border border-gold-400/40 bg-cream-100/90 text-[10px] font-cinzel text-charcoal-800 shadow-md backdrop-blur-sm flex items-center gap-1"
+        {/* Mobile Viewport Header Utility (Shown only when opened for pristine door intro) */}
+        {isOpened && (
+          <div
+            className={`md:hidden fixed top-3 z-40 transition-all duration-300 ${
+              isRtl ? 'right-3' : 'left-3'
+            }`}
           >
-            <Globe className="w-3 h-3 text-gold-600" />
-            <span>{lang === 'tr' ? 'العربية' : 'TR'}</span>
-          </button>
-        </div>
+            <button
+              onClick={onToggleLang}
+              type="button"
+              className="px-3.5 py-1.5 rounded-full border border-gold-400/40 bg-cream-100/90 text-[11px] font-medium font-cinzel text-charcoal-800 shadow-[0_2px_10px_rgba(114,99,81,0.15)] backdrop-blur-md flex items-center gap-1.5 active:scale-95 transition-transform"
+            >
+              <Globe className="w-3.5 h-3.5 text-gold-600" />
+              <span>{lang === 'tr' ? 'العربية' : 'TR'}</span>
+            </button>
+          </div>
+        )}
 
         {/* Children (Card & Slides) */}
         <div className="w-full h-full min-h-[100dvh] md:min-h-0 bg-[#FAF8F3]">

@@ -126,6 +126,7 @@ export default function App() {
       onToggleLang={() => setLang(lang === 'tr' ? 'ar' : 'tr')}
       onOpenAdmin={() => setIsAdminOpen(true)}
       data={data}
+      isOpened={isOpened}
     >
       {/* 3D Intro Doors */}
       <DoorIntro

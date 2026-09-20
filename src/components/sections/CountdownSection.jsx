@@ -7,10 +7,13 @@ export default function CountdownSection({ data }) {
 
   const calculateTimeLeft = () => {
     const now = new Date().getTime();
-    const difference = targetDate - now;
+    let difference = targetDate - now;
 
+    // If target date has passed, count down to the grand celebration so it's always alive
     if (difference <= 0) {
-      return { days: 0, hours: 0, minutes: 0, seconds: 0 };
+      const yearMs = 365 * 24 * 60 * 60 * 1000;
+      const cycles = Math.ceil(Math.abs(difference) / yearMs) || 1;
+      difference = (targetDate + cycles * yearMs) - now;
     }
 
     return {

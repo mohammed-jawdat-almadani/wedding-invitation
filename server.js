@@ -16,8 +16,17 @@ app.use(express.static(path.join(__dirname, 'dist'), {
   }
 }));
 
-// SPA fallback for all routes (Express 5 compatible)
+// Prevent SPA fallback for missing assets in /assets/
+app.use((req, res, next) => {
+  if (req.path.startsWith('/assets/')) {
+    return res.status(404).send('Asset not found');
+  }
+  next();
+});
+
+// SPA fallback for all HTML routes (Express 5 compatible)
 app.use((req, res) => {
+  res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
   res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
 
