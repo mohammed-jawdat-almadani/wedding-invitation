@@ -16,8 +16,8 @@ app.use(express.static(path.join(__dirname, 'dist'), {
   }
 }));
 
-// SPA fallback for all routes
-app.get('*', (req, res) => {
+// SPA fallback for all routes (Express 5 compatible)
+app.use((req, res) => {
   res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
 
